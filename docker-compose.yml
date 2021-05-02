@@ -1,0 +1,24 @@
+version: "2"
+services:
+
+  # go-service
+  go-service:
+    image: go-service-image
+    build:
+      context: go-service-with-prometheus-instrumented
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090"
+
+  # prometheus
+  prometheus:
+    image: my-prometheus
+    build:
+      context: prometheus
+      dockerfile: prometheus/Dockerfile
+    ports:
+      - "9090:9090"
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    depends_on:
+      - go-service
