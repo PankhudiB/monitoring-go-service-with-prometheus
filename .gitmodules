@@ -1,0 +1,3 @@
+[submodule "go-service-with-prometheus-instrumented"]
+	path = go-service-with-prometheus-instrumented
+	url = git@github.com:PankhudiB/go-service-with-prometheus-instrumented.git
